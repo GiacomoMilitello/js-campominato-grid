@@ -1,7 +1,4 @@
-ul{
-    gap: 20px;
-}
 .ratio{
-    width: calc((100% / 7) - 20px);
+    width: calc(100% / 10);
     aspect-ratio: 1;
 }
