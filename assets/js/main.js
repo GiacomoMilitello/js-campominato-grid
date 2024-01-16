@@ -13,9 +13,22 @@ Aggiungere una select accanto al bottone di generazione, che fornisca una scelta
 */
 
 const ul = document.querySelector('ul.list');
+const lastClick = document.querySelector('p.text-white');
+const generate = document.getElementById('ok');
+
+generate.addEventListener('click', function() {
+    ul.classList.remove('d-none');
+});
+
         for (let i = 1; i <= 100; i++) {
             const element = document.createElement('li');
                 element.innerText = i;
                 element.classList.add('bg-body-secondary', 'ratio', 'd-flex', 'justify-content-center', 'align-items-center', 'fw-bold', 'border', 'border-white', 'border-2');
-            ul.appendChild(element);
+                element.addEventListener('click', function() {
+                    this.classList.toggle('bg-body-secondary');
+                    this.classList.toggle('bg-primary');
+                    this.classList.toggle('text-white');
+                    lastClick.innerText = 'Ultima cella cliccata: ' + i;
+                });
+                ul.appendChild(element);
         }
