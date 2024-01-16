@@ -15,15 +15,18 @@ Aggiungere una select accanto al bottone di generazione, che fornisca una scelta
 const ul = document.querySelector('ul.list');
 const lastClick = document.querySelector('p.text-white');
 const generate = document.getElementById('ok');
+let levelSelected = document.getElementById('level')
 
 generate.addEventListener('click', function() {
+    lastClick.innerText = 'Quale cella cliccherai per prima?';
+    ul.innerHTML = '';
     ul.classList.remove('d-none');
-});
 
-        for (let i = 1; i <= 100; i++) {
+    if (levelSelected.value === 'easy'){
+        for (let i = 1; i <= 49; i++) {
             const element = document.createElement('li');
                 element.innerText = i;
-                element.classList.add('bg-body-secondary', 'ratio', 'd-flex', 'justify-content-center', 'align-items-center', 'fw-bold', 'border', 'border-white', 'border-2');
+                element.classList.add('bg-body-secondary', 'ratio-49', 'd-flex', 'justify-content-center', 'align-items-center', 'fw-bold', 'border', 'border-white', 'border-2');
                 element.addEventListener('click', function() {
                     this.classList.toggle('bg-body-secondary');
                     this.classList.toggle('bg-primary');
@@ -32,3 +35,32 @@ generate.addEventListener('click', function() {
                 });
                 ul.appendChild(element);
         }
+    } else if (levelSelected.value === 'normal'){
+        for (let i = 1; i <= 81; i++) {
+            const element = document.createElement('li');
+                element.innerText = i;
+                element.classList.add('bg-body-secondary', 'ratio-81', 'd-flex', 'justify-content-center', 'align-items-center', 'fw-bold', 'border', 'border-white', 'border-2');
+                element.addEventListener('click', function() {
+                    this.classList.toggle('bg-body-secondary');
+                    this.classList.toggle('bg-primary');
+                    this.classList.toggle('text-white');
+                    lastClick.innerText = 'Ultima cella cliccata: ' + i;
+                });
+                ul.appendChild(element);
+            }
+    } else {
+        for (let i = 1; i <= 100; i++) {
+            const element = document.createElement('li');
+                element.innerText = i;
+                element.classList.add('bg-body-secondary', 'ratio-100', 'd-flex', 'justify-content-center', 'align-items-center', 'fw-bold', 'border', 'border-white', 'border-2');
+                element.addEventListener('click', function() {
+                    this.classList.toggle('bg-body-secondary');
+                    this.classList.toggle('bg-primary');
+                    this.classList.toggle('text-white');
+                    lastClick.innerText = 'Ultima cella cliccata: ' + i;
+                });
+                ul.appendChild(element);
+        }
+    }
+})
+
